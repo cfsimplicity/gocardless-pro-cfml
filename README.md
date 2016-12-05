@@ -50,7 +50,7 @@ If GoCardless returns an error, the following keys will normally be present:
 
 ##Usage/Examples
 
-Basic examples of how to call the API methods using the CFML library will be provided in the wiki. For full details of the API including optional parameters, see the [GoCardless API documentation](https://developer.gocardless.com/api-reference).
+Basic examples of how to call the API methods using the CFML library are provided in the [wiki](https://github.com/cfsimplicity/gocardless-pro-cfml/wiki). For full details of the API including optional parameters, see the [GoCardless API documentation](https://developer.gocardless.com/api-reference).
 
 ##Legal
 
