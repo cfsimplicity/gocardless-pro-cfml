@@ -52,6 +52,9 @@ If GoCardless returns an error, the following keys will normally be present:
 
 Basic examples of how to call the API methods using the CFML library are provided in the [wiki](https://github.com/cfsimplicity/gocardless-pro-cfml/wiki). For full details of the API including optional parameters, see the [GoCardless API documentation](https://developer.gocardless.com/api-reference).
 
+##Test Suite
+The automated tests require [TestBox 2.3](https://github.com/Ortus-Solutions/TestBox) or later. You will need to create an application mapping for `/testbox`
+
 ##Legal
 
 ###The MIT License (MIT)
