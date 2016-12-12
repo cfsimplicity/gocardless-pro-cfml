@@ -6,7 +6,7 @@ component{
 	};
 
 	variables.instance = {
-		clientVersion = "0.1.0"
+		clientVersion = "0.2.0"
 		,goCardlessApiVersion = "2015-07-06"
 		,engineIsColdFusion = ( server.coldfusion.productname IS "ColdFusion Server" )
 		,engineIsLucee = ( server.coldfusion.productname IS "Lucee" )
@@ -26,6 +26,7 @@ component{
 		variables.redirectFlowService = New redirectFlowService( instanceVariables=instance );
 		variables.refundService = New refundService( instanceVariables=instance );
 		variables.subscriptionService = New subscriptionService( instanceVariables=instance );
+		variables.webhookService = New webhookService( instanceVariables=instance );
 		return this;
 	}
 
@@ -67,6 +68,10 @@ component{
 
 	public function subscriptions(){
 		return variables.subscriptionService;
+	}
+
+	public function webhooks(){
+		return variables.webhookService;
 	}
 
 }

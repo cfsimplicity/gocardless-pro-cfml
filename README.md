@@ -52,6 +52,36 @@ If GoCardless returns an error, the following keys will normally be present:
 
 Basic examples of how to call the API methods using the CFML library are provided in the [wiki](https://github.com/cfsimplicity/gocardless-pro-cfml/wiki). For full details of the API including optional parameters, see the [GoCardless API documentation](https://developer.gocardless.com/api-reference).
 
+##Webhook processor
+
+The library provides a method for validating and processing [webhooks](https://developer.gocardless.com/api-reference/#appendix-webhooks): event notifications sent by GoCardless to a URL you specify.
+
+You can call the method as part of the code you write to handle the requests made by GoCardless to the specified URL. You will need to pass it two arguments:
+
+- `httpRequestData`: a struct containing the headers and body sent by the GoCardless webhook. This is easy to retrieve using the built-in CFML function [`GetHTTPRequestData()`](http://cfdocs.org/gethttprequestdata).
+- `secret`: the secret you have defined for your webhook endpoint in the GoCardless control panel.
+
+Example:
+
+```
+gocardless = New gocardless( access_token="your_access_token_here", environment="sandbox" );
+result = gocardless.webhooks().process( GetHTTPRequestData(), "your_webhook_secret_here" );
+```
+
+The method returns a struct which will always include a boolean key `isValid`. Unless the signature is missing, it will also include a `payload` key containing the raw JSON body and a `signature` key containing the header value received.
+
+###Invalid requests
+
+The method will check the webhook's signature and if it is invalid or missing a `498 Token Invalid` header will be included in the response as required by the API. An `error` key will be added to the returned struct.
+
+An `error` key will also be present if the body sent is not valid JSON.
+
+###Valid requests
+
+A successfully validated webhook request will include a key `events` containing an array of one or more event objects. You should loop through these events and handle them appropriately.
+
+[More detail about working with webhooks](https://developer.gocardless.com/getting-started/api/staying-up-to-date-with-webhooks/)
+
 ##Test Suite
 The automated tests require [TestBox 2.3](https://github.com/Ortus-Solutions/TestBox) or later. You will need to create an application mapping for `/testbox`
 
