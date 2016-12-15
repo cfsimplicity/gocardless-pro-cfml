@@ -21,7 +21,7 @@ Adobe ColdFusion 11 or later.
 
 Instances of the library can be created as needed, or you can store a singleton in the application scope.
 
-You will need to pass in your GoCardless API Developer access token and specify whether the environment is *sandbox* (the default) or *production*.
+You will need to pass in your GoCardless API Developer access token and specify whether the environment is *sandbox* (the default) or *live*.
 
 ```
 gocardless = New gocardless( access_token="your_access_token_here", environment="sandbox" );
