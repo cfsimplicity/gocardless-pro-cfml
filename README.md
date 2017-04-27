@@ -1,15 +1,15 @@
 #GoCardless Pro CFML client library
 A CFML library for interacting with the [GoCardless](https://gocardless.com/) Direct Debit payment [API](https://developer.gocardless.com/). 
 
-##Features
+## Features
 
 All of the [Core Endpoints](https://developer.gocardless.com/api-reference/#core-endpoints) are supported, including the [Redirect Flow](https://developer.gocardless.com/api-reference/#core-endpoints-redirect-flows).
 
-##Limitations
+## Limitations
 
 The [Whitelabel Partner Endpoints](https://developer.gocardless.com/api-reference/#whitelabel-partner-endpoints) are not supported.
 
-##Requirements
+## Requirements
 
 [Lucee Server](http://lucee.org/) 4.5 or later
 
@@ -17,7 +17,7 @@ OR
 
 Adobe ColdFusion 11 or later.
 
-##Initialisation
+## Initialisation
 
 Instances of the library can be created as needed, or you can store a singleton in the application scope.
 
@@ -27,7 +27,7 @@ You will need to pass in your GoCardless API Developer access token and specify 
 gocardless = New gocardless( access_token="your_access_token_here", environment="sandbox" );
 ```
 
-##Return values
+## Return values
 
 To provide flexibility and make it easier to test and debug, each method returns a struct containing details of how the library has processed your input as well as the returned data in both its raw json and de-serialised form.
 
@@ -48,11 +48,11 @@ If GoCardless returns an error, the following keys will normally be present:
 - `error`: a string description of the http status code and API error message
 - `data.error`: a CFML struct containing the full error object returned by GoCardless
 
-##Usage/Examples
+## Usage/Examples
 
 Basic examples of how to call the API methods using the CFML library are provided in the [wiki](https://github.com/cfsimplicity/gocardless-pro-cfml/wiki). For full details of the API including optional parameters, see the [GoCardless API documentation](https://developer.gocardless.com/api-reference).
 
-##Webhook processor
+## Webhook processor
 
 The library provides a method for validating and processing [webhooks](https://developer.gocardless.com/api-reference/#appendix-webhooks): event notifications sent by GoCardless to a URL you specify.
 
@@ -70,13 +70,13 @@ result = gocardless.webhooks().process( GetHTTPRequestData(), "your_webhook_secr
 
 The method returns a struct which will always include a boolean key `isValid`. Unless the signature is missing, it will also include a `payload` key containing the raw JSON body and a `signature` key containing the header value received.
 
-###Invalid requests
+### Invalid requests
 
 The method will check the webhook's signature and if it is invalid or missing a `498 Token Invalid` header will be included in the response as required by the API. An `error` key will be added to the returned struct.
 
 An `error` key will also be present if the body sent is not valid JSON.
 
-###Valid requests
+### Valid requests
 
 A successfully validated webhook request will include a key `events` containing an array of one or more event objects. You should loop through these events and handle them appropriately.
 
@@ -87,7 +87,7 @@ The automated tests require [TestBox 2.3](https://github.com/Ortus-Solutions/Tes
 
 ##Legal
 
-###The MIT License (MIT)
+### The MIT License (MIT)
 
 Copyright (c) 2016 Julian Halliwell
 
