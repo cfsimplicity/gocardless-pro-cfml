@@ -1,4 +1,4 @@
-#GoCardless Pro CFML client library
+# GoCardless Pro CFML client library
 A CFML library for interacting with the [GoCardless](https://gocardless.com/) Direct Debit payment [API](https://developer.gocardless.com/). 
 
 ## Features
