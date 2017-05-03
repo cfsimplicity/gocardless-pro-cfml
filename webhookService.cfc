@@ -19,7 +19,7 @@ component extends="baseService"{
 		}
 		if( !isValidSignature( result.signature, result.payload, secret ) ){
 			result.error = "Invalid signature";
-			header statuscode="498" statustext="Token Invalid";
+			cfheader( statuscode="498", statustext="Token Invalid" );
 			return result;
 		}
 		var data = DeserializeJson( result.payload );
