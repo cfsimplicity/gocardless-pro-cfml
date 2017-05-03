@@ -82,10 +82,10 @@ A successfully validated webhook request will include a key `events` containing 
 
 [More detail about working with webhooks](https://developer.gocardless.com/getting-started/api/staying-up-to-date-with-webhooks/)
 
-##Test Suite
+## Test Suite
 The automated tests require [TestBox 2.3](https://github.com/Ortus-Solutions/TestBox) or later. You will need to create an application mapping for `/testbox`
 
-##Legal
+## Legal
 
 ### The MIT License (MIT)
 
