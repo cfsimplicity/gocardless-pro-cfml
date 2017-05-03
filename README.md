@@ -89,7 +89,7 @@ The automated tests require [TestBox 2.3](https://github.com/Ortus-Solutions/Tes
 
 ### The MIT License (MIT)
 
-Copyright (c) 2016 Julian Halliwell
+Copyright (c) 2016-17 Julian Halliwell
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
