@@ -14,7 +14,6 @@ describe( "webhooks",function(){
 		expect( result.error ).toBe( "Invalid signature" );
 	});
 
-
 	it( "returns the correct result if the signature is valid", function(){
 		makePublic( gc.webhooks(), "computeSignature" );
 		var secret="abc123";
@@ -53,12 +52,13 @@ describe( "webhooks",function(){
 		  ]
 		}';
 		var signature = gc.webhooks().computeSignature( requestBody, secret );
-		var httpRequestData.headers[ "Webhook-Signature" ] = signature;
+		var httpRequestData ={}; //ACF doesn't like defining the following key in one line
+		httpRequestData.headers[ "Webhook-Signature" ] = signature;
 		httpRequestData.content = requestBody;
 		var result = gc.webhooks().process( httpRequestData, secret );
 		expect( result.isValid ).toBeTrue();
 		expect( result ).toHaveKey( "events" );
-	});
+	}); 
 
 });
 </cfscript>
