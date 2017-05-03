@@ -3,7 +3,7 @@ describe( "completeRedirectFlow()",function(){
 
 	beforeEach( function(){
 		variables.mockSuccessfulHttpResponse = {
-			fileContent: '{"redirect_flows":{"id":"RE123","description":"Test purchase","session_token":"123","scheme":null,"success_redirect_url":"https://apps.simplicityweb.com/gc/confirm","created_at":"2016-11-04T12:32:04.455Z","links":{"creditor":"CR123","mandate":"MD123","customer":"CU123","customer_bank_account":"BA123"}}}'
+			fileContent: '{"redirect_flows":{"id":"RE123","description":"Test purchase","session_token":"123","scheme":null,"success_redirect_url":"https://localhost/complete","created_at":"2016-11-04T12:32:04.455Z","links":{"creditor":"CR123","mandate":"MD123","customer":"CU123","customer_bank_account":"BA123"}}}'
 			,statuscode: 200
 		};
 		variables.completeRedirectFlow = gc.redirectFlows().complete( "RE123" );

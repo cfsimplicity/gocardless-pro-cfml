@@ -3,7 +3,7 @@ describe( "createRedirectFlow()",function(){
 
 	beforeEach( function(){
 		variables.mockSuccessfulHttpResponse = {
-			fileContent: '{"redirect_flows":{"id":"RE123","description":"Test purchase","session_token":"123","scheme":null,"success_redirect_url":"https://apps.simplicityweb.com/gc/confirm","created_at":"2016-11-04T12:32:04.455Z","links":{"creditor":"CR123"},"redirect_url":"https://pay-sandbox.gocardless.com/flow/RE123"}}'
+			fileContent: '{"redirect_flows":{"id":"RE123","description":"Test purchase","session_token":"123","scheme":null,"success_redirect_url":"https://localhost/complete","created_at":"2016-11-04T12:32:04.455Z","links":{"creditor":"CR123"},"redirect_url":"https://pay-sandbox.gocardless.com/flow/RE123"}}'
 			,statuscode: 201
 		};
 		variables.createRedirectFlow = gc.redirectFlows().create();
@@ -16,12 +16,37 @@ describe( "createRedirectFlow()",function(){
 			.withSessionToken( "123" )
 			.withSuccessRedirectUrl( "https://localhost/complete" )
 			.withDescription( "Test purchase" )
+			.withPrefilledCustomerAddressLine1( "line 1" )
+			.withPrefilledCustomerAddressLine2( "line 2" )
+			.withPrefilledCustomerAddressLine3( "line 3" )
+			.withPrefilledCustomerCity( "city" )
+			.withPrefilledCustomerCompanyName( "company" )
+			.withPrefilledCustomerCountryCode( "GB" )
+			.withPrefilledCustomerEmail( "name@example.com" )
+			.withPrefilledCustomerFamilyName( "Osborne" )
+			.withPrefilledCustomerGivenName( "Frank" )
+			.withPrefilledCustomerLanguage( "en" )
+			.withPrefilledCustomerPostalCode( "postcode" )
+			.withPrefilledCustomerSwedishIdentityNumber( "swid" )
 			.execute();
 		expect( result.requestUrl ).toBe( "https://api-sandbox.gocardless.com/redirect_flows" );
 		expect( result.requestMethod ).toBe( "POST" );
 		expect( result.requestBody ).toInclude( '"session_token":"123"' );
 		expect( result.requestBody ).toInclude( '"success_redirect_url":"https://localhost/complete"' );
 		expect( result.requestBody ).toInclude( '"description":"Test purchase"' );
+		expect( result.requestBody ).toInclude( '"prefilled_customer":' );
+		expect( result.requestBody ).toInclude( '"address_line1":"line 1"' );
+		expect( result.requestBody ).toInclude( '"address_line2":"line 2"' );
+		expect( result.requestBody ).toInclude( '"address_line3":"line 3"' );
+		expect( result.requestBody ).toInclude( '"city":"city"' );
+		expect( result.requestBody ).toInclude( '"company_name":"company"' );
+		expect( result.requestBody ).toInclude( '"country_code":"GB"' );
+		expect( result.requestBody ).toInclude( '"email":"name@example.com"' );
+		expect( result.requestBody ).toInclude( '"family_name":"Osborne"' );
+		expect( result.requestBody ).toInclude( '"given_name":"Frank"' );
+		expect( result.requestBody ).toInclude( '"language":"en"' );
+		expect( result.requestBody ).toInclude( '"postal_code":"postcode"' );
+		expect( result.requestBody ).toInclude( '"swedish_identity_number":"swid"' );
 	});
 
 	it( "serialises a numeric session token as a JSON string enclosed in quotes", function(){

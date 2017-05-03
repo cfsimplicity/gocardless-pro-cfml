@@ -19,7 +19,7 @@ component extends="testbox.system.BaseSpec"{
 			var specs=DirectoryList( ExpandPath( "specs" ),false,"name","*.cfm" );
 			// run every file in the specs folder
 			for( var file in specs ){
-				include "specs/#file#";	
+				include "specs/#file#";
 			}
 
 		});
