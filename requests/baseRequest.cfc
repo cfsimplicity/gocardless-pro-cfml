@@ -64,7 +64,14 @@ component accessors="true"{
 	}
 
 	void function serializeBodyToJson(){
-		this.setBodyJson( SerializeJSON( this.getBody() ) );
+		var json = SerializeJSON( this.getBody() );
+		if( instance.engineIsColdFusion )
+			json = removeForceQuotedNumberValuesHackCharacter( json );
+		this.setBodyJson( json );
+	}
+
+	string function removeForceQuotedNumberValuesHackCharacter( required string body ){
+		return body.Replace( "\u0002", "", "ALL" );
 	}
 
 	string function getRequestUrl(){
