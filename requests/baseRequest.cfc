@@ -26,7 +26,7 @@ component accessors="true"{
 
 	void function setStringValue( required string property, required string value ){
 		/* Deal with ACF's tendency to convert number strings to unquoted numbers when serialised to JSON */
-		if( instance.engineIsColdFusion ) 
+		if( instance.engineIsColdFusion AND IsNumeric( value ) ) 
 			value = Chr( 2 ) & value;
 		variables[ property ] = value;
 	}
