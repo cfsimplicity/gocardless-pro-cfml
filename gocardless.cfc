@@ -6,7 +6,7 @@ component{
 	};
 
 	variables.instance = {
-		clientVersion = "0.3.0"
+		clientVersion = "0.3.1"
 		,goCardlessApiVersion = "2015-07-06"
 		,engineIsColdFusion = ( server.coldfusion.productname IS "ColdFusion Server" )
 		,engineIsLucee = ( server.coldfusion.productname IS "Lucee" )
