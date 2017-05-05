@@ -13,7 +13,7 @@ component accessors="true" extends="baseRequest"{
 	}
 
 	function withSessionToken( required string value ){
-		this.setStringValue( "sessionToken", value );
+		this.setSessionToken( forceQuotedNumberValue( value ) );
 		return this;
 	}
 

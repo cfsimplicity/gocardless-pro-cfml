@@ -22,7 +22,7 @@ component accessors="true" extends="baseRequest"{
 	}
 
 	function withSessionToken( required string value ){
-		this.setStringValue( "sessionToken", value );
+		this.setSessionToken( forceQuotedNumberValue( value ) );
 		return this;
 	}
 
@@ -82,7 +82,7 @@ component accessors="true" extends="baseRequest"{
 	}
 
 	function withPrefilledCustomerPostalCode( required string value ){
-		variables.prefilledCustomer.postal_code = value;
+		variables.prefilledCustomer.postal_code = forceQuotedNumberValue( value );
 		return this;
 	}
 

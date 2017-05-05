@@ -36,7 +36,7 @@ component accessors="true" extends="baseRequest"{
 	}
 
 	function withReference( required string value ){
-		this.setStringValue( "reference", value );
+		this.setReference( forceQuotedNumberValue( value ) );
 		return this;
 	}
 

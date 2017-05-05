@@ -24,17 +24,17 @@ component accessors="true" extends="baseRequest"{
 	}
 
 	function withAccountNumber( required string value ){
-		this.setStringValue( "accountNumber", value );
+		this.setAccountNumber( forceQuotedNumberValue( value ) );
 		return this;
 	}
 
 	function withBankCode( required string value ){
-		this.setStringValue( "bankCode", value );
+		this.setBankCode( forceQuotedNumberValue( value ) );
 		return this;
 	}
 
 	function withBranchCode( required string value ){
-		this.setStringValue( "branchCode", value );
+		this.setBranchCode( forceQuotedNumberValue( value ) );
 		return this;
 	}
 

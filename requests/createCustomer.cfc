@@ -84,7 +84,7 @@ component accessors="true" extends="baseRequest"{
 	}
 
 	function withPostalCode( required string value ){
-		this.setStringValue( "postalCode", value );
+		this.setPostalCode( forceQuotedNumberValue( value ) );
 		return this;
 	}
 

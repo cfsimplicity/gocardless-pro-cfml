@@ -24,11 +24,11 @@ component accessors="true"{
 		return false;
 	}
 
-	void function setStringValue( required string property, required string value ){
+	string function forceQuotedNumberValue( required string value ){
 		/* Deal with ACF's tendency to convert number strings to unquoted numbers when serialised to JSON */
 		if( instance.engineIsColdFusion AND IsNumeric( value ) ) 
-			value = Chr( 2 ) & value;
-		variables[ property ] = value;
+			return ArrayToList( [ Chr( 2 ), value ], "" );//avoid string concatenation using & 
+		return value;
 	}
 	
 	void function validateMetaData( required struct metadata ){
